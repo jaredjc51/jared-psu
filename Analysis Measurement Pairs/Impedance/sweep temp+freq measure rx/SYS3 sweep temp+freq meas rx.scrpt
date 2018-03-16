@@ -1,15 +1,22 @@
-set heater=love_sscube, acdevice=hp4284, dmm=HP3478
+set heater=love_sscube, acdevice=hp4284, dcsource=hp4284, dmm=HP3478
 set tempsensor=ktcpl
 set temptol=1, temphold=1
-set ac=0
+// change DC bias here
+set dc=0
+// change AC amplitude here
+set ac=1
+// change temperature start, stop, and step here
 sweep temperature, start=140, stop=400, step=20, xaxis
-	wait s=900
-	measure temp1
-	set ac=1
-	sweep freq, start=1000000, stop=40, seq=123468, yaxis
-		measure rx, plot
-	endsweep
-	set ac=0
-	measure temp2
+// wait for temperature to equilibrate
+    wait m=13
+    measure temp1
+    check time1
+// change measured frequencies here
+    sweep freq, start=1e6, stop=20, seq=123468, yaxis
+        measure rx, plot
+    endsweep
+    check time2
+    measure temp2
 endsweep
+// cool to room temperature
 set temp=25

@@ -12,7 +12,7 @@ sweep time, start=1, stop=900, step=1, xaxis
     measure pa0, plot
 endsweep
 measure temp1
-set temptol=400, temphold=1, temp=-50
+set temptol=400, temphold=1, temp=-100
 sweep time, start=1, stop=1800, step=10, xaxis
     measure temp2, plot
 endsweep

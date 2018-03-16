@@ -8,4 +8,5 @@ sweep temp, start=30, stop=400, step=1, xaxis
     check time0
     measure temp0
 endsweep
+// cool to room temp
 set temptol=1, temphold=1, temp=25

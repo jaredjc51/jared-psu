@@ -1,14 +1,20 @@
 set sweepdevice=HP4980, dmm=HP34401, heater=ss_cube
 set tempsensor=ktcpl
 set temptol=1, temphold=1
+// change DC bias here
 set dc=0
+// change AC amplitude here
 set ac=1
+// change temperature start, stop, and step here
 sweep temperature, start=400, stop=200, step=10
+// wait for temperature to equilibrate
     wait m=13
     measure temp0
     check time0
+// change measured frequencies here
     measure sweepfreq, start=2e6, stop=20, log=201, rx, med
     check time1
     measure temp1
 endsweep
+// cool to room temperature
 set temp=25
