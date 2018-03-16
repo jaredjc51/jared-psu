@@ -1,2 +1,2 @@
-# jared-psu
-Code I've created for data processing and simulations in pursuit of my PhD
+# Welcome / How to Use
+This GitHub repository hosts various scripts that have been useful to me.
