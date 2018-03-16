@@ -1,0 +1,19 @@
+set pameter=HP4140, dcsource=HP4140, dmm=HP34401, heater=DD9010
+set tempsensor=ktcpl
+// set poling temperature here
+set temptol=1, temphold=1, temp=210
+wait m=13
+measure temp0
+check time0
+// set poling voltage here
+set dc=28
+// set poling time here
+sweep time, start=1, stop=900, step=1, xaxis
+    measure pa0, plot
+endsweep
+measure temp1
+set temptol=400, temphold=1, temp=-50
+sweep time, start=1, stop=1800, step=10, xaxis
+    measure temp2, plot
+endsweep
+set dc=0

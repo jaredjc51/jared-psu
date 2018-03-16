@@ -1,0 +1,14 @@
+set sweepdevice=HP4980, dmm=HP34401, heater=ss_cube
+set tempsensor=ktcpl
+set temptol=1, temphold=1
+set dc=0
+set ac=1
+sweep temperature, start=400, stop=200, step=10
+    wait m=13
+    measure temp0
+    check time0
+    measure sweepfreq, start=2e6, stop=20, log=201, rx, med
+    check time1
+    measure temp1
+endsweep
+set temp=25

@@ -1,0 +1,15 @@
+set heater=love_sscube, acdevice=hp4284, dmm=HP3478
+set tempsensor=ktcpl
+set temptol=1, temphold=1
+set ac=0
+sweep temperature, start=140, stop=400, step=20, xaxis
+	wait s=900
+	measure temp1
+	set ac=1
+	sweep freq, start=1000000, stop=40, seq=123468, yaxis
+		measure rx, plot
+	endsweep
+	set ac=0
+	measure temp2
+endsweep
+set temp=25

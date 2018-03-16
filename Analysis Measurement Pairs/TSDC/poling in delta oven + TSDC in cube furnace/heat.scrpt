@@ -1,0 +1,11 @@
+set pameter=HP4140, dcsource=HP4140, dmm=HP34401, heater=love_sscube
+set tempsensor=ktcpl
+// set heating rate here
+set temptol=1, deg/min=8
+// set temperature range here
+sweep temp, start=30, stop=400, step=1, xaxis
+    measure pa0, plot
+    check time0
+    measure temp0
+endsweep
+set temptol=1, temphold=1, temp=25

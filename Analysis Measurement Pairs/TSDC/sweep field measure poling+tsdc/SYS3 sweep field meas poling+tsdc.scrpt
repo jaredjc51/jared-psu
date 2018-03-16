@@ -1,0 +1,36 @@
+set dmm=HP3478, pameter=HP4140, dcsource=HP4140, heater=love_sscube, switch=ni6008
+set temptol=1, temphold=1
+// Set initial temperature
+set outputconnection=2
+set temp=90
+wait m=15
+// Sweep poling fields
+set outputconnection=1
+sweep dc, start=4.7, stop=50, step=4.7, xaxis
+// Electrically pole the sample
+    sweep time, start=1, stop=180, step=1
+        measure pa0
+    endsweep
+    measure temp3
+// Cool the sample
+    set temptol=4, temphold=1
+    set temp=25
+    wait s=900
+    set temp=30
+    set dc=0
+// Short the sample
+    set outputconnection=2
+    set temptol=1, deg/min=4
+// Measure TSDC
+    sweep temp, start=30, stop=400, step=1, yaxis
+        measure pa1, plot
+        measure temp1
+        check time1
+    endsweep
+// Cool the sample
+    set temptol=4, temphold=1
+    set temp=90
+    wait s=900
+    set outputconnection=1
+endsweep
+set temp=25
